@@ -33,6 +33,6 @@
     ]
   ],
   "products": [
-    {"name": "ボックスティッシュ", "keyword": "ティッシュペーパー 箱", "min_price": 1200, "must": [["ティッシュ", "ティシュ"], ["箱"]], "amount_from": [["(\\d+)箱.{0,3}?[×X\\*](\\d+)", 1], ["(\\d+)箱", 1]], "amount_range": [5, 120], "limit": 10, "sample_amount": 60}
+    {"name": "ボックスティッシュ", "keyword": "ティッシュペーパー 箱", "min_price": 1200, "must": [["ティッシュ", "ティシュ"], ["箱"]], "amount_from": [["(\\d+)箱.{0,3}?[×X\\*](\\d+)", 1], ["(\\d+)箱", 1]], "amount_range": [5, 120], "limit": 10, "sample_amount": 60, "sort": "-reviewCount", "pages": 2, "outlier": 0.45}
   ]
 }

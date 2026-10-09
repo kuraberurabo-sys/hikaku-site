@@ -33,7 +33,16 @@
     "イヤホン",
     "ソーラー",
     "名入れ",
-    "ノベルティ"
+    "ノベルティ",
+    "訳アリ",
+    "ワケあり",
+    "わけあり",
+    "箱イタミ",
+    "箱不良",
+    "箱潰れ",
+    "破れ",
+    "買取",
+    "含まれ"
   ],
   "related": [
     [
@@ -42,7 +51,7 @@
     ]
   ],
   "products": [
-    {"name": "10000mAh", "keyword": "モバイルバッテリー 10000mAh", "min_price": 1200, "must": [["10000MAH"], ["モバイルバッテリー"]], "amount": 10000, "limit": 5, "single_units": ["MAH"]},
-    {"name": "20000mAh", "keyword": "モバイルバッテリー 20000mAh", "min_price": 2200, "must": [["20000MAH"], ["モバイルバッテリー"]], "amount": 20000, "limit": 5, "single_units": ["MAH"]}
+    {"name": "10000mAh", "keyword": "モバイルバッテリー 10000mAh", "min_price": 800, "must": [["10000MAH"], ["モバイルバッテリー"]], "amount": 10000, "limit": 5, "single_units": ["MAH"]},
+    {"name": "20000mAh", "keyword": "モバイルバッテリー 20000mAh", "min_price": 1500, "must": [["20000MAH"], ["モバイルバッテリー"]], "amount": 20000, "limit": 5, "single_units": ["MAH"]}
   ]
 }

@@ -37,7 +37,7 @@
     ]
   ],
   "products": [
-    {"name": "ドッグフード（ドライ）", "keyword": "ドッグフード ドライ", "min_price": 2000, "must": [["ドッグフード"], ["KG"]], "exclude": ["キャット", "猫"], "amount_from": [["(\\d+(?:\\.\\d+)?)KG.{0,3}?[×X\\*](\\d+)", 1], ["(\\d+(?:\\.\\d+)?)KG", 1]], "amount_range": [1, 40], "single_units": ["KG", "キロ"], "limit": 8, "sample_amount": 10},
-    {"name": "キャットフード（ドライ）", "keyword": "キャットフード ドライ", "min_price": 2000, "must": [["キャットフード"], ["KG"]], "exclude": ["ドッグ", "犬"], "amount_from": [["(\\d+(?:\\.\\d+)?)KG.{0,3}?[×X\\*](\\d+)", 1], ["(\\d+(?:\\.\\d+)?)KG", 1]], "amount_range": [1, 40], "single_units": ["KG", "キロ"], "limit": 8, "sample_amount": 10}
+    {"name": "ドッグフード（ドライ）", "keyword": "ドッグフード ドライ", "min_price": 2000, "must": [["ドッグフード"], ["KG"]], "exclude": ["キャット", "猫"], "amount_from": [["(\\d+(?:\\.\\d+)?)KG.{0,3}?[×X\\*](\\d+)", 1], ["(\\d+(?:\\.\\d+)?)KG", 1]], "amount_range": [1, 40], "single_units": ["KG", "キロ"], "limit": 8, "sample_amount": 10, "sort": "-reviewCount", "pages": 2, "outlier": 0.45},
+    {"name": "キャットフード（ドライ）", "keyword": "キャットフード ドライ", "min_price": 2000, "must": [["キャットフード"], ["KG"]], "exclude": ["ドッグ", "犬"], "amount_from": [["(\\d+(?:\\.\\d+)?)KG.{0,3}?[×X\\*](\\d+)", 1], ["(\\d+(?:\\.\\d+)?)KG", 1]], "amount_range": [1, 40], "single_units": ["KG", "キロ"], "limit": 8, "sample_amount": 10, "sort": "-reviewCount", "pages": 2, "outlier": 0.45}
   ]
 }
