@@ -207,7 +207,11 @@ def offers_for(spec, common_exclude, ng_keyword="", limit=1, siblings=()):
             "postage_extra": item.get("postageFlag") == 1,
         })
     offers.sort(key=lambda o: o["effective"])
-    return offers[:limit]
+    # 同じ店が色違いや重複出品で並ぶので、店ごとに最安の1件だけ残す
+    by_shop = {}
+    for offer in offers:
+        by_shop.setdefault(offer["shop"], offer)
+    return list(by_shop.values())[:limit]
 
 
 # ---------- HTML ----------
@@ -282,6 +286,12 @@ def price_note():
             "最新の価格・送料・在庫はリンク先でご確認ください。</p>")
 
 
+def related_links(data):
+    """data["related"] は [ページからの相対パス, 表示名] のリスト。"""
+    links = "".join(f'<li><a href="{esc(href)}">{esc(label)}</a></li>' for href, label in data.get("related", []))
+    return f"<h2>関連する計算ツール</h2><ul>{links}</ul>" if links else ""
+
+
 def cards(items):
     return '<div class="cards">' + "".join(
         f'<a class="card" href="{esc(href)}"><strong>{esc(title)}</strong><span>{esc(text)}</span></a>'
@@ -310,6 +320,7 @@ def build_value_ranking(path, data):
     body += f'<p class="note">{esc(data["score_note"])}</p>'
     if missing:
         body += '<p class="note">現在、条件に合う出品が見つからなかったモデル: ' + esc("、".join(missing)) + "</p>"
+    body += related_links(data)
     page(path, data["title"], data["description"], body, uses_api=True)
 
 
@@ -334,6 +345,7 @@ def build_unit_price(path, data):
     body += price_note()
     if missing:
         body += '<p class="note">現在、条件に合う出品が見つからなかった商品: ' + esc("、".join(missing)) + "</p>"
+    body += related_links(data)
     page(path, data["title"], data["description"], body, uses_api=True)
 
 
