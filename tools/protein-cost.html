@@ -1,0 +1,32 @@
+<!-- title: プロテインの1杯あたりの値段計算機 -->
+<!-- description: プロテインの価格と内容量から、1杯あたりとタンパク質1gあたりの値段を計算。内容量や含有率の違う商品の比較に。 -->
+<p>プロテインの価格と内容量を入れると、1杯あたりの値段と、タンパク質1gあたりの値段が出ます。含有率の違う商品を比べるときは、タンパク質1gあたりで見るのが公平です。</p>
+<div class="tool">
+  <label for="price">価格（円）</label>
+  <input id="price" type="number" inputmode="decimal" min="0" placeholder="例: 3980">
+  <label for="amount">内容量（g）</label>
+  <input id="amount" type="number" inputmode="decimal" min="0" placeholder="例: 1000">
+  <label for="serving">1杯に使う量（g）</label>
+  <input id="serving" type="number" inputmode="decimal" min="0" value="30">
+  <label for="rate">タンパク質含有率（%）</label>
+  <input id="rate" type="number" inputmode="decimal" min="0" max="100" value="70">
+  <div class="result" id="result"></div>
+</div>
+<p class="note">1杯の量とタンパク質含有率は商品によって違います。パッケージの栄養成分表示を見て書き換えてください。含有率は「1食あたりのタンパク質量 ÷ 1食の量 × 100」で求められます。</p>
+<script>
+const ids = ["price", "amount", "serving", "rate"];
+function update() {
+  const [price, amount, serving, rate] = ids.map(id => parseFloat(document.getElementById(id).value));
+  const result = document.getElementById("result");
+  if (!(price > 0) || !(amount > 0) || !(serving > 0) || !(rate > 0)) { result.textContent = ""; return; }
+  const perGram = price / amount;
+  const lines = [
+    `1杯あたり: <strong>${(perGram * serving).toFixed(1)}円</strong>`,
+    `タンパク質1gあたり: <strong>${(perGram / (rate / 100)).toFixed(2)}円</strong>`,
+    `1杯のタンパク質: 約${(serving * rate / 100).toFixed(1)}g`,
+    `この袋で飲める回数: 約${Math.floor(amount / serving)}杯`,
+  ];
+  result.innerHTML = lines.join("<br>");
+}
+ids.forEach(id => document.getElementById(id).addEventListener("input", update));
+</script>

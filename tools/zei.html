@@ -1,0 +1,32 @@
+<!-- title: 消費税計算機（税込・税抜） -->
+<!-- description: 税抜価格から税込価格、税込価格から税抜価格を計算。10%と軽減税率8%の切り替えに対応。 -->
+<p>金額を入れて税率を選ぶと、税込と税抜の両方の金額が出ます。</p>
+<div class="tool">
+  <label for="amount">金額（円）</label>
+  <input id="amount" type="number" inputmode="decimal" min="0" placeholder="例: 1980">
+  <label for="rate">税率</label>
+  <div class="row">
+    <button type="button" data-rate="10" class="rate">10%</button>
+    <button type="button" data-rate="8" class="rate">8%（軽減税率）</button>
+  </div>
+  <div class="result" id="result"></div>
+</div>
+<p class="note">1円未満は切り捨てで計算しています。端数の扱いはお店によって違うので、レシートと1円ずれることがあります。軽減税率8%は、持ち帰りの飲食料品や定期購読の新聞などが対象です。</p>
+<script>
+let rate = 10;
+const yen = v => Math.floor(v).toLocaleString("ja-JP") + "円";
+function update() {
+  document.querySelectorAll(".rate").forEach(b => b.classList.toggle("best", Number(b.dataset.rate) === rate));
+  const amount = parseFloat(document.getElementById("amount").value);
+  const result = document.getElementById("result");
+  if (!(amount > 0)) { result.textContent = ""; return; }
+  const withTax = Math.floor(amount * (1 + rate / 100));
+  const withoutTax = Math.ceil(amount / (1 + rate / 100));
+  result.innerHTML =
+    `入力が税抜のとき → 税込 <strong>${yen(withTax)}</strong>（消費税 ${yen(withTax - amount)}）<br>` +
+    `入力が税込のとき → 税抜 <strong>${yen(withoutTax)}</strong>（消費税 ${yen(amount - withoutTax)}）`;
+}
+document.querySelectorAll(".rate").forEach(b => b.addEventListener("click", () => { rate = Number(b.dataset.rate); update(); }));
+document.getElementById("amount").addEventListener("input", update);
+update();
+</script>

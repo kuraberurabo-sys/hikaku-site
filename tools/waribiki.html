@@ -1,0 +1,37 @@
+<!-- title: 割引計算機（何%オフ・いくら引き） -->
+<!-- description: 元の値段と割引率から割引後の価格を計算。元値と売値から「何%オフか」を逆算することもできます。 -->
+<p>割引後の価格を出す計算と、値引き後の価格から割引率を逆算する計算の2つができます。</p>
+<div class="tool">
+  <h2>割引後の価格を出す</h2>
+  <label for="base">元の値段（円）</label>
+  <input id="base" type="number" inputmode="decimal" min="0" placeholder="例: 5980">
+  <label for="off">割引率（%）</label>
+  <input id="off" type="number" inputmode="decimal" min="0" max="100" placeholder="例: 30">
+  <div class="result" id="result1"></div>
+</div>
+<div class="tool">
+  <h2>何%オフかを逆算する</h2>
+  <label for="before">元の値段（円）</label>
+  <input id="before" type="number" inputmode="decimal" min="0" placeholder="例: 5980">
+  <label for="after">割引後の値段（円）</label>
+  <input id="after" type="number" inputmode="decimal" min="0" placeholder="例: 3980">
+  <div class="result" id="result2"></div>
+</div>
+<p class="note">割引後の価格は1円未満を切り捨てています。お店によって端数の扱いは違うので、1円ずれることがあります。「3割引」は30%、「半額」は50%です。</p>
+<script>
+const value = id => parseFloat(document.getElementById(id).value);
+const yen = v => Math.floor(v).toLocaleString("ja-JP") + "円";
+function update1() {
+  const base = value("base"), off = value("off"), out = document.getElementById("result1");
+  if (!(base > 0) || !(off >= 0) || off > 100) { out.textContent = ""; return; }
+  const price = Math.floor(base * (1 - off / 100));
+  out.innerHTML = `割引後: <strong>${yen(price)}</strong><br>値引き額: ${yen(base - price)}`;
+}
+function update2() {
+  const before = value("before"), after = value("after"), out = document.getElementById("result2");
+  if (!(before > 0) || !(after >= 0) || after > before) { out.textContent = ""; return; }
+  out.innerHTML = `割引率: <strong>${((1 - after / before) * 100).toFixed(1)}%オフ</strong><br>値引き額: ${yen(before - after)}`;
+}
+["base", "off"].forEach(id => document.getElementById(id).addEventListener("input", update1));
+["before", "after"].forEach(id => document.getElementById(id).addEventListener("input", update2));
+</script>

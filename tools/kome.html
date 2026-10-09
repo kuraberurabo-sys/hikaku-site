@@ -1,0 +1,30 @@
+<!-- title: お米の1杯あたりの値段計算機 -->
+<!-- description: お米の価格と重さから、茶碗1杯・1合・1kgあたりの値段を計算。5kgと10kgのどちらが得かの比較にも。 -->
+<p>お米の袋の価格と重さを入れると、茶碗1杯あたり、1合あたり、1kgあたりの値段が出ます。</p>
+<div class="tool">
+  <label for="price">お米の価格（円）</label>
+  <input id="price" type="number" inputmode="decimal" min="0" placeholder="例: 4000">
+  <label for="weight">重さ（kg）</label>
+  <input id="weight" type="number" inputmode="decimal" min="0" placeholder="例: 10">
+  <label for="bowl">茶碗1杯に使うお米（g）</label>
+  <input id="bowl" type="number" inputmode="decimal" min="0" value="65">
+  <div class="result" id="result"></div>
+</div>
+<p class="note">1合は約150g、茶碗1杯（ご飯約150g）は炊く前のお米で約65gとして計算しています。盛る量に合わせて、茶碗1杯のグラム数は書き換えてください。</p>
+<script>
+const ids = ["price", "weight", "bowl"];
+function update() {
+  const [price, weight, bowl] = ids.map(id => parseFloat(document.getElementById(id).value));
+  const result = document.getElementById("result");
+  if (!(price > 0) || !(weight > 0) || !(bowl > 0)) { result.textContent = ""; return; }
+  const perKg = price / weight;
+  const lines = [
+    `1kgあたり: <strong>${Math.round(perKg).toLocaleString("ja-JP")}円</strong>`,
+    `1合あたり: <strong>${(perKg * 0.15).toFixed(1)}円</strong>`,
+    `茶碗1杯あたり: <strong>${(perKg * bowl / 1000).toFixed(1)}円</strong>`,
+    `この袋で炊ける量: 約${Math.floor(weight * 1000 / bowl).toLocaleString("ja-JP")}杯`,
+  ];
+  result.innerHTML = lines.join("<br>");
+}
+ids.forEach(id => document.getElementById(id).addEventListener("input", update));
+</script>
