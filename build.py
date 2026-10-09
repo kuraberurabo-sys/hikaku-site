@@ -58,6 +58,7 @@ SECTIONS = [
 stats = {"ok": 0, "fail": 0}
 _last_request = 0.0
 PAGES = []
+STATUS = []
 
 
 def load(name):
@@ -457,6 +458,19 @@ def faq(pairs):
     return body, data
 
 
+def record(path, title, count, missing, top, metrics):
+    """週次の確認用に、ランキングの要約を残す（status.json に出す）。
+
+    確認する側が全ページを開かなくて済むよう、件数・該当なし・上位3件と、
+    1位が中央値からどれだけ離れているかを入れる。離れすぎは照合の誤りを疑う目印。
+    """
+    spread = None
+    if len(metrics) >= 3:
+        middle = statistics.median(metrics)
+        spread = round(metrics[0] / middle, 2) if middle else None
+    STATUS.append({"path": path, "title": title, "count": count, "missing": missing, "top": top, "first_vs_median": spread})
+
+
 def price_note():
     return (f'<p class="note">価格は{STAMP}時点で楽天市場の商品検索から取得したものです。'
             "ポイントは商品ごとの通常倍率のみで計算しており、キャンペーンや会員ランクによる上乗せは含みません。"
@@ -517,6 +531,9 @@ def build_value(path, data, section):
     body += price_note()
     body += f'<p class="note">{esc(data["score_note"])}</p>'
     body += missing_note(missing, "モデル")
+    record(path, data["title"], len(rows), missing,
+           [{"name": s["name"], "shop": o[0]["shop"], "price": o[0]["effective"], "metric": round(v)} for v, s, o in rows[:3]],
+           [v for v, _, _ in rows])
     faq_html, faq_data = faq(pairs)
     body += faq_html + related_links(data)
     page(path, data["title"], data["description"], body, uses_api=True, parents=[section], dated=True, extra_ld=[faq_data])
@@ -580,6 +597,10 @@ def build_unit(path, data, section):
     if data.get("note"):
         body += f'<p class="note">{esc(data["note"])}</p>'
     body += missing_note(missing, "商品")
+    record(path, data["title"], len(rows), missing,
+           [{"name": short(o["name"], 60), "bucket": s["name"], "shop": o["shop"], "price": o["effective"],
+             "amount": o["amount"], "metric": round(u, 2)} for u, s, o in rows[:3]],
+           [u for u, _, _ in rows])
     faq_html, faq_data = faq(pairs)
     body += faq_html + related_links(data)
     page(path, data["title"], data["description"], body, uses_api=True, parents=[section], dated=True, extra_ld=[faq_data])
@@ -602,6 +623,7 @@ def build_cheapest(path, data, section):
     if data.get("note"):
         body += f'<p class="note">{esc(data["note"])}</p>'
     body += missing_note(missing, "区分")
+    record(path, data["title"], len(table_rows), missing, [], [])
     faq_html, faq_data = faq(UPDATE_FAQ)
     body += faq_html + related_links(data)
     page(path, data["title"], data["description"], body, uses_api=True, parents=[section], dated=True, extra_ld=[faq_data])
@@ -773,6 +795,11 @@ def main():
     # IndexNow（Bing など）に更新を知らせるための鍵ファイル。公開してよい値
     if SITE.get("indexnow_key"):
         (DIST / f'{SITE["indexnow_key"]}.txt').write_text(SITE["indexnow_key"], encoding="utf-8")
+
+    # 週次の確認が1回の取得で全体を見られるようにする要約。公開ページと同じ内容で、履歴は持たない
+    (DIST / "status.json").write_text(json.dumps(
+        {"generated": NOW.isoformat(timespec="minutes"), "live": LIVE, "pages": len(PAGES),
+         "api_ok": stats["ok"], "api_fail": stats["fail"], "rankings": STATUS}, ensure_ascii=False, indent=1), encoding="utf-8")
 
     today = NOW.strftime("%Y-%m-%d")
     urls = "".join(f"<url><loc>{esc(SITE['base_url'] + p)}</loc><lastmod>{today}</lastmod></url>" for p in sorted(PAGES))
