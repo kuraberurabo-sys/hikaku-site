@@ -1,0 +1,56 @@
+{
+  "title": "microSDカードの1GBあたり価格ランキング",
+  "description": "microSDカードを、楽天市場のポイント込み実質価格の1GBあたり単価で比べたランキング。128GB〜1TBを比較。毎日自動更新。",
+  "lead": "容量ごとに楽天市場で在庫のあるmicroSDカードの安い出品を探し、ポイント込み実質価格を1GBあたりに換算して安い順に並べています。",
+  "note": "microSDカードは、表示より実際の容量が小さい製品が出回ることのある商品です。極端に安い出品は、メーカーと販売店をリンク先でよく確認してください。",
+  "unit": "GB",
+  "per": 1,
+  "per_label": "1GBあたり",
+  "decimals": 1,
+  "ng_keyword": "中古",
+  "exclude": [
+    "中古",
+    "ジャンク",
+    "未使用",
+    "開封",
+    "展示",
+    "訳あり",
+    "リファービッシュ",
+    "再生品",
+    "アウトレット",
+    "USED",
+    "レンタル",
+    "カードリーダー",
+    "リーダー",
+    "ケース",
+    "ドライブレコーダー",
+    "ドラレコ",
+    "カメラ",
+    "防犯",
+    "レコーダー",
+    "タブレット",
+    "スマートフォン",
+    "プレーヤー",
+    "ラジオ",
+    "スピーカー",
+    "ゲーム機",
+    "本体",
+    "モニター",
+    "プロジェクター",
+    "時計",
+    "イヤホン",
+    "マウス"
+  ],
+  "related": [
+    [
+      "../../tools/jisshitsu/",
+      "実質価格計算機（ポイント・クーポン・送料込み）"
+    ]
+  ],
+  "products": [
+    {"name": "microSD 128GB", "keyword": "microSD 128GB", "min_price": 1200, "must": [["128GB"], ["MICROSD", "MICROSDXC", "MICROSDHC", "マイクロSD", "マイクロSDXC"]], "amount": 128, "single_units": ["GB", "TB"], "limit": 3},
+    {"name": "microSD 256GB", "keyword": "microSD 256GB", "min_price": 2400, "must": [["256GB"], ["MICROSD", "MICROSDXC", "MICROSDHC", "マイクロSD", "マイクロSDXC"]], "amount": 256, "single_units": ["GB", "TB"], "limit": 3},
+    {"name": "microSD 512GB", "keyword": "microSD 512GB", "min_price": 5000, "must": [["512GB"], ["MICROSD", "MICROSDXC", "MICROSDHC", "マイクロSD", "マイクロSDXC"]], "amount": 512, "single_units": ["GB", "TB"], "limit": 3},
+    {"name": "microSD 1TB", "keyword": "microSD 1TB", "min_price": 10000, "must": [["1TB"], ["MICROSD", "MICROSDXC", "MICROSDHC", "マイクロSD", "マイクロSDXC"]], "amount": 1000, "single_units": ["GB", "TB"], "limit": 3}
+  ]
+}

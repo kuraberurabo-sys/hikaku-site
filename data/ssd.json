@@ -1,0 +1,52 @@
+{
+  "title": "内蔵SSDの1TBあたり価格ランキング",
+  "description": "内蔵SSDを、楽天市場のポイント込み実質価格の1TBあたり単価で比べたランキング。M.2 NVMeとSATAを容量別に。毎日自動更新。",
+  "lead": "容量と接続方式ごとに楽天市場で在庫のある安い出品を探し、ポイント込み実質価格を1TBあたりに換算して安い順に並べています。速度や耐久性、保証期間は製品ごとに違うので、リンク先で確認してください。",
+  "unit": "TB",
+  "per": 1,
+  "per_label": "1TBあたり",
+  "ng_keyword": "中古 外付け",
+  "exclude": [
+    "中古",
+    "ジャンク",
+    "未使用",
+    "開封",
+    "展示",
+    "訳あり",
+    "リファービッシュ",
+    "再生品",
+    "アウトレット",
+    "USED",
+    "レンタル",
+    "外付け",
+    "ポータブル",
+    "ケース",
+    "エンクロージャ",
+    "パソコン",
+    "ノートPC",
+    "ミニPC",
+    "デスクトップ",
+    "換装",
+    "サービス",
+    "USBメモリ",
+    "スティック",
+    "クローン",
+    "レコーダー",
+    "マウンタ",
+    "変換"
+  ],
+  "related": [
+    [
+      "../../tools/jisshitsu/",
+      "実質価格計算機（ポイント・クーポン・送料込み）"
+    ]
+  ],
+  "products": [
+    {"name": "M.2 NVMe 500GB", "keyword": "SSD 500GB NVMe M.2", "min_price": 5000, "must": [["500GB"], ["SSD"], ["NVME"]], "amount": 0.5, "exclude": ["SATA"], "single_units": ["GB", "TB"], "limit": 3},
+    {"name": "M.2 NVMe 1TB", "keyword": "SSD 1TB NVMe M.2", "min_price": 9000, "must": [["1TB"], ["SSD"], ["NVME"]], "amount": 1, "exclude": ["SATA"], "single_units": ["GB", "TB"], "limit": 3},
+    {"name": "M.2 NVMe 2TB", "keyword": "SSD 2TB NVMe M.2", "min_price": 17000, "must": [["2TB"], ["SSD"], ["NVME"]], "amount": 2, "exclude": ["SATA"], "single_units": ["GB", "TB"], "limit": 3},
+    {"name": "M.2 NVMe 4TB", "keyword": "SSD 4TB NVMe M.2", "min_price": 35000, "must": [["4TB"], ["SSD"], ["NVME"]], "amount": 4, "exclude": ["SATA"], "single_units": ["GB", "TB"], "limit": 3},
+    {"name": "2.5インチ SATA 500GB", "keyword": "SSD 500GB SATA 2.5インチ", "min_price": 4500, "must": [["500GB"], ["SSD"], ["SATA"]], "amount": 0.5, "exclude": ["NVME", "M.2", "MSATA"], "single_units": ["GB", "TB"], "limit": 3},
+    {"name": "2.5インチ SATA 1TB", "keyword": "SSD 1TB SATA 2.5インチ", "min_price": 8000, "must": [["1TB"], ["SSD"], ["SATA"]], "amount": 1, "exclude": ["NVME", "M.2", "MSATA"], "single_units": ["GB", "TB"], "limit": 3}
+  ]
+}

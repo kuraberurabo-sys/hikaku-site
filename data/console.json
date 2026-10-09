@@ -1,0 +1,52 @@
+{
+  "title": "ゲーム機本体の楽天最安値",
+  "description": "Nintendo Switch 2とPlayStation 5の本体を、楽天市場のポイント込み実質価格が安い順に比較。毎日自動更新。",
+  "lead": "機種ごとに、楽天市場で在庫のある新品の本体を、ポイント込み実質価格が安い順に3件ずつ並べています。",
+  "note": "メーカー希望小売価格との比較はしていません。希望小売価格より高い出品も含まれるので、購入の前にメーカーの公式サイトで価格を確認してください。",
+  "ng_keyword": "中古",
+  "exclude": [
+    "中古",
+    "ジャンク",
+    "未使用",
+    "開封",
+    "展示",
+    "訳あり",
+    "リファービッシュ",
+    "再生品",
+    "アウトレット",
+    "USED",
+    "レンタル",
+    "ケース",
+    "フィルム",
+    "カバー",
+    "コントローラー",
+    "コントローラ",
+    "ソフト",
+    "カメラ",
+    "ドック",
+    "充電",
+    "スタンド",
+    "ヘッドセット",
+    "ケーブル",
+    "シール",
+    "スキン",
+    "ポーチ",
+    "バッグ",
+    "グリップ",
+    "アダプタ",
+    "保護",
+    "セット"
+  ],
+  "related": [
+    [
+      "../../tools/jisshitsu/",
+      "実質価格計算機（ポイント・クーポン・送料込み）"
+    ]
+  ],
+  "products": [
+    {"name": "Nintendo Switch 2", "keyword": "Nintendo Switch 本体", "min_price": 40000, "must": [["SWITCH2", "スイッチ2"], ["本体"]]},
+    {"name": "PlayStation 5", "keyword": "PS5 本体", "min_price": 55000, "must": [["PS5", "PLAYSTATION5"], ["本体"]], "exclude": ["PRO", "デジタル", "DIGITAL"]},
+    {"name": "PlayStation 5 デジタル・エディション", "keyword": "PS5 デジタル 本体", "min_price": 45000, "must": [["PS5", "PLAYSTATION5"], ["デジタル", "DIGITAL"], ["本体"]], "exclude": ["PRO"]},
+    {"name": "PlayStation 5 Pro", "keyword": "PS5 Pro 本体", "min_price": 90000, "must": [["PS5", "PLAYSTATION5"], ["PRO"], ["本体"]]}
+  ]
+}
