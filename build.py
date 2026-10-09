@@ -55,15 +55,25 @@ SEPARATORS = r"[\s\-‐ー_/]"
 
 def norm(text):
     """全角半角と大文字小文字の違いを吸収する。"""
-    return unicodedata.normalize("NFKC", text).upper()
+    # 商標記号は NFKC で "TM" になり型番の照合を壊すので先に消す
+    return unicodedata.normalize("NFKC", re.sub("[™®©]", "", text)).upper()
 
 
 def has_token(name, token):
-    """空白やハイフンの有無を無視して token を探す（"RTX5070" は "RTX 5070" に一致）。"""
+    """空白やハイフンの有無を無視して token を探す（"RTX5070" は "RTX 5070" に一致）。
+
+    別の語の一部には一致させない。"5KG" は "15KG" に、"B570" は "B570170K" に、
+    "ARC" は "BARCO" に一致しない。
+    """
     chars = re.sub(SEPARATORS, "", norm(token))
-    # 数字で始まるトークンは直前が数字のときに一致させない（"5KG" が "15KG" に一致しないように）
-    boundary = r"(?<![\d.])" if chars[:1].isdigit() else ""
-    pattern = boundary + (SEPARATORS + "*").join(re.escape(c) for c in chars)
+    before = ""
+    if chars[:1].isdigit():
+        before = r"(?<![\d.])"
+    elif chars[:1].isascii() and chars[:1].isalpha() and len(chars) <= 4:
+        # 長いトークンは "GEFORCERTX5070" のような連結表記を拾えるよう前方は縛らない
+        before = r"(?<![A-Z])"
+    after = r"(?![A-Z0-9])" if chars[-1:].isascii() and chars[-1:].isalnum() else ""
+    pattern = before + (SEPARATORS + "*").join(re.escape(c) for c in chars) + after
     return re.search(pattern, name) is not None
 
 
@@ -147,9 +157,20 @@ def sample_items(spec):
              "shopName": "サンプル店", "itemUrl": "#", "mediumImageUrls": []}]
 
 
-def offers_for(spec, common_exclude, ng_keyword="", limit=1):
-    """spec に一致する出品を、ポイント込みの実質価格が安い順に返す。取得失敗は None。"""
+def offers_for(spec, common_exclude, ng_keyword="", limit=1, siblings=()):
+    """spec に一致する出品を、ポイント込みの実質価格が安い順に返す。取得失敗は None。
+
+    siblings は同じ表に並ぶ他の spec。複数モデルから選ぶ形式の出品は、表示価格が
+    最安モデルのものなので、他の spec にも一致する出品は外す。
+    """
     exclude = common_exclude + spec.get("exclude", []) + ["ふるさと納税"]
+
+    def is_other_model(name):
+        return any(
+            other is not spec and matches(name, other["must"], other.get("exclude", []))
+            for other in siblings
+        )
+
     ng_keyword = " ".join(filter(None, [ng_keyword, spec.get("ng_keyword", "")]))
     found = []
     for page in (1, 2):
@@ -161,7 +182,8 @@ def offers_for(spec, common_exclude, ng_keyword="", limit=1):
             return None
         for raw in items:
             item = raw.get("Item", raw)
-            if matches(item.get("itemName", ""), spec["must"], exclude, spec.get("single_size", False)):
+            name = item.get("itemName", "")
+            if matches(name, spec["must"], exclude, spec.get("single_size", False)) and not is_other_model(name):
                 found.append(item)
         if found or len(items) < 30:
             break
@@ -271,7 +293,7 @@ def cards(items):
 def build_value_ranking(path, data):
     rows, missing = [], []
     for spec in data["models"]:
-        offers = offers_for(spec, data["exclude"], data.get("ng_keyword", ""))
+        offers = offers_for(spec, data["exclude"], data.get("ng_keyword", ""), siblings=data["models"])
         if not offers:
             missing.append(spec["name"] + ("（取得失敗）" if offers is None else ""))
             continue
@@ -296,7 +318,7 @@ def build_value_ranking(path, data):
 def build_unit_price(path, data):
     rows, missing = [], []
     for spec in data["products"]:
-        offers = offers_for(spec, data["exclude"], data.get("ng_keyword", ""), limit=spec.get("limit", 1))
+        offers = offers_for(spec, data["exclude"], data.get("ng_keyword", ""), limit=spec.get("limit", 1), siblings=data["products"])
         if not offers:
             missing.append(spec["name"] + ("（取得失敗）" if offers is None else ""))
             continue
