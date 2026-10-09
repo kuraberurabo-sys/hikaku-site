@@ -129,7 +129,7 @@ def parse_amount(item_name, rules):
 
 # ---------- 楽天API ----------
 
-def api_search(keyword, min_price, page=1, ng_keyword="", max_price=None):
+def api_search(keyword, min_price, page=1, ng_keyword="", max_price=None, sort="+itemPrice"):
     global _last_request
     query = {
         "applicationId": APP_ID,
@@ -139,7 +139,7 @@ def api_search(keyword, min_price, page=1, ng_keyword="", max_price=None):
         "formatVersion": 2,
         "hits": 30,
         "page": page,
-        "sort": "+itemPrice",
+        "sort": sort,
         "availability": 1,
         "minPrice": min_price,
     }
@@ -209,10 +209,13 @@ def offers_for(spec, common_exclude, ng_keyword="", limit=1, siblings=()):
         )
 
     ng_keyword = " ".join(filter(None, [ng_keyword, spec.get("ng_keyword", "")]))
+    # 価格の安い順だと、まとめ売りのように「高いが単価は安い」出品を拾えない。
+    # 内容量を読んで単価を比べる商品は、レビュー数順などで広く取ってから並べ直す
+    sort = spec.get("sort", "+itemPrice")
     offers = []
-    for page in (1, 2):
+    for page in range(1, spec.get("pages", 2) + 1):
         if LIVE:
-            items = api_search(spec["keyword"], spec["min_price"], page, ng_keyword, spec.get("max_price"))
+            items = api_search(spec["keyword"], spec["min_price"], page, ng_keyword, spec.get("max_price"), sort)
         else:
             items = sample_items(spec) if page == 1 else []
         if items is None:
@@ -245,13 +248,15 @@ def offers_for(spec, common_exclude, ng_keyword="", limit=1, siblings=()):
                 "url": item.get("affiliateUrl") or item.get("itemUrl", "#"),
                 "postage_extra": item.get("postageFlag") == 1,
             })
-        if offers or len(items) < 30:
+        # 価格順なら、見つかった時点でそれより安い出品は無いので打ち切れる
+        if len(items) < 30 or (offers and sort == "+itemPrice"):
             break
     if not offers:
         return []
     # 付属品の混入や内容量の読み違いを避けるため、中央値から大きく外れて安いものを落とす
     median = statistics.median(o["unit_price"] for o in offers)
-    offers = sorted((o for o in offers if o["unit_price"] >= median * 0.6), key=lambda o: o["unit_price"])
+    floor = median * spec.get("outlier", 0.6)
+    offers = sorted((o for o in offers if o["unit_price"] >= floor), key=lambda o: o["unit_price"])
     # 同じ店が色違いや重複出品で並ぶので、店ごとに最安の1件だけ残す
     by_shop = {}
     for offer in offers:
