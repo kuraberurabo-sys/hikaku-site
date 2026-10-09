@@ -31,6 +31,16 @@
     "アウトレット",
     "USED"
   ],
+  "related": [
+    [
+      "../../tools/denkidai/",
+      "電気代計算機（消費電力から計算）"
+    ],
+    [
+      "../../tools/jisshitsu/",
+      "実質価格計算機（ポイント・クーポン・送料込み）"
+    ]
+  ],
   "models": [
     {"name": "AMD Ryzen 9 9950X3D", "score": 70100, "keyword": "Ryzen 9950X3D", "min_price": 60000, "must": [["9950X3D"]]},
     {"name": "AMD Ryzen 9 9950X", "score": 65708, "keyword": "Ryzen 9950X", "min_price": 50000, "must": [["9950X"]], "exclude": ["9950X3D"]},

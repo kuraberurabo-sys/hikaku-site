@@ -32,6 +32,16 @@
     "アウトレット",
     "USED"
   ],
+  "related": [
+    [
+      "../../tools/denkidai/",
+      "電気代計算機（消費電力から計算）"
+    ],
+    [
+      "../../tools/jisshitsu/",
+      "実質価格計算機（ポイント・クーポン・送料込み）"
+    ]
+  ],
   "models": [
     {"name": "GeForce RTX 5090", "score": 39002, "keyword": "RTX 5090", "min_price": 250000, "must": [["RTX5090"]]},
     {"name": "GeForce RTX 5080", "score": 35629, "keyword": "RTX 5080", "min_price": 120000, "must": [["RTX5080"]]},
@@ -41,11 +51,11 @@
     {"name": "GeForce RTX 5060 Ti 8GB", "score": 21854, "keyword": "RTX 5060 Ti 8GB", "min_price": 40000, "must": [["RTX5060TI"], ["8GB", "8G"]]},
     {"name": "GeForce RTX 5060", "score": 20620, "keyword": "RTX 5060", "min_price": 32000, "must": [["RTX5060"]], "exclude": ["RTX5060TI"], "ng_keyword": "Ti"},
     {"name": "GeForce RTX 5050", "score": 16751, "keyword": "RTX 5050", "min_price": 27000, "must": [["RTX5050"]]},
-    {"name": "GeForce RTX 4070 SUPER", "score": 29939, "keyword": "RTX 4070 SUPER", "min_price": 55000, "must": [["RTX4070SUPER"]], "exclude": ["RTX4070TI"]},
+    {"name": "GeForce RTX 4070 SUPER", "score": 29939, "keyword": "RTX 4070 SUPER", "min_price": 55000, "must": [["RTX4070SUPER"]], "exclude": ["RTX4070TI"], "max_price": 160000},
     {"name": "GeForce RTX 4060 Ti", "score": 22594, "keyword": "RTX 4060 Ti", "min_price": 36000, "must": [["RTX4060TI"]]},
     {"name": "GeForce RTX 4060", "score": 19484, "keyword": "RTX 4060", "min_price": 28000, "must": [["RTX4060"]], "exclude": ["RTX4060TI"], "ng_keyword": "Ti"},
     {"name": "GeForce RTX 3060 12GB", "score": 16701, "keyword": "RTX 3060 12GB", "min_price": 24000, "must": [["RTX3060"], ["12GB", "12G"]], "exclude": ["RTX3060TI"]},
-    {"name": "GeForce RTX 3050 8GB", "score": 12460, "keyword": "RTX 3050 8GB", "min_price": 20000, "must": [["RTX3050"], ["8GB", "8G"]]},
+    {"name": "GeForce RTX 3050 8GB", "score": 12460, "keyword": "RTX 3050 8GB", "min_price": 20000, "must": [["RTX3050"], ["8GB", "8G"]], "max_price": 70000},
     {"name": "Radeon RX 9070 XT", "score": 26919, "keyword": "RX 9070 XT", "min_price": 60000, "must": [["RX9070XT"]]},
     {"name": "Radeon RX 9070", "score": 25398, "keyword": "Radeon RX 9070", "min_price": 52000, "must": [["RX9070"]], "exclude": ["RX9070XT"], "ng_keyword": "XT"},
     {"name": "Radeon RX 9060 XT 16GB", "score": 20131, "keyword": "RX 9060 XT 16GB", "min_price": 36000, "must": [["RX9060XT"], ["16GB", "16G"]]},

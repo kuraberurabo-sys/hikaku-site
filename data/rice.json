@@ -27,6 +27,16 @@
     "こうじ",
     "麹"
   ],
+  "related": [
+    [
+      "../../tools/kome/",
+      "お米の1杯あたりの値段計算機"
+    ],
+    [
+      "../../tools/tanka/",
+      "単価計算機（どっちが安い？）"
+    ]
+  ],
   "products": [
     {"name": "白米 5kg", "amount": 5, "limit": 3, "keyword": "米 5kg 白米", "min_price": 1500, "must": [["5KG", "5キロ"], ["米"]], "single_size": true},
     {"name": "白米 10kg", "amount": 10, "limit": 3, "keyword": "米 10kg 白米", "min_price": 3600, "must": [["10KG", "10キロ"], ["米"]], "single_size": true},
