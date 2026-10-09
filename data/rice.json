@@ -28,9 +28,9 @@
     "麹"
   ],
   "products": [
-    {"name": "白米 5kg", "amount": 5, "limit": 3, "keyword": "米 5kg 白米", "min_price": 2000, "must": [["5KG", "5キロ"], ["米"]], "single_size": true},
-    {"name": "白米 10kg", "amount": 10, "limit": 3, "keyword": "米 10kg 白米", "min_price": 4000, "must": [["10KG", "10キロ"], ["米"]], "single_size": true},
-    {"name": "白米 20kg", "amount": 20, "limit": 3, "keyword": "米 20kg 白米", "min_price": 8000, "must": [["20KG", "20キロ"], ["米"]], "single_size": true},
-    {"name": "白米 30kg", "amount": 30, "limit": 3, "keyword": "米 30kg 白米", "min_price": 12000, "must": [["30KG", "30キロ"], ["米"]], "single_size": true}
+    {"name": "白米 5kg", "amount": 5, "limit": 3, "keyword": "米 5kg 白米", "min_price": 1500, "must": [["5KG", "5キロ"], ["米"]], "single_size": true},
+    {"name": "白米 10kg", "amount": 10, "limit": 3, "keyword": "米 10kg 白米", "min_price": 3000, "must": [["10KG", "10キロ"], ["米"]], "single_size": true},
+    {"name": "白米 20kg", "amount": 20, "limit": 3, "keyword": "米 20kg 白米", "min_price": 6000, "must": [["20KG", "20キロ"], ["米"]], "single_size": true},
+    {"name": "白米 30kg", "amount": 30, "limit": 3, "keyword": "米 30kg 白米", "min_price": 9000, "must": [["30KG", "30キロ"], ["米"]], "single_size": true}
   ]
 }
