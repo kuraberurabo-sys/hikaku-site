@@ -42,7 +42,9 @@ h2 { font-size: 1.1rem; margin: 28px 0 8px; }
 table { border-collapse: collapse; width: 100%; font-size: 0.9rem; white-space: nowrap; }
 th, td { padding: 8px 12px; text-align: right; border-bottom: 1px solid var(--line); }
 th { font-weight: 600; color: var(--muted); font-size: 0.8rem; }
-th:nth-child(2), td:nth-child(2) { text-align: left; }
+th.l, td.l { text-align: left; }
+.item { display: block; white-space: normal; min-width: 220px; max-width: 380px; font-size: 0.8rem; color: var(--muted); }
+main ul { padding-left: 1.2em; }
 tbody tr:last-child td { border-bottom: none; }
 .tag { font-size: 0.7rem; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 16px 0; }
