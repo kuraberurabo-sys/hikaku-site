@@ -1,0 +1,41 @@
+<!-- title: 単価計算機（どっちが安い？） -->
+<!-- description: 価格と内容量を入れるだけで、1個・100g・100mlあたりの単価を比べられる計算機。ポイント還元にも対応。 -->
+<p>内容量の違う商品を、同じ量あたりの価格で比べます。ポイント還元率を入れると、還元分を引いた実質価格で計算します。</p>
+<div class="tool">
+  <div id="rows"></div>
+  <button type="button" id="add">商品を追加</button>
+  <div class="result" id="result"></div>
+</div>
+<p class="note">単価は「(価格 − ポイント) ÷ 内容量 × 100」で計算しています。内容量の単位（g、ml、枚など）は商品どうしでそろえてください。</p>
+<script>
+const rows = document.getElementById("rows");
+const result = document.getElementById("result");
+function addRow() {
+  const row = document.createElement("div");
+  row.className = "row";
+  row.innerHTML = '<input type="number" inputmode="decimal" min="0" placeholder="価格（円）" aria-label="価格">' +
+    '<input type="number" inputmode="decimal" min="0" placeholder="内容量" aria-label="内容量">' +
+    '<input type="number" inputmode="decimal" min="0" placeholder="ポイント還元（%）" aria-label="ポイント還元率">';
+  row.addEventListener("input", update);
+  rows.appendChild(row);
+}
+function update() {
+  let best = null;
+  const lines = [];
+  [...rows.children].forEach((row, index) => {
+    row.classList.remove("best");
+    const [price, amount, rate] = [...row.querySelectorAll("input")].map(i => parseFloat(i.value));
+    if (!(price > 0) || !(amount > 0)) return;
+    const unit = price * (1 - (rate > 0 ? rate : 0) / 100) / amount * 100;
+    lines.push(`商品${index + 1}: 100あたり <strong>${unit.toFixed(1)}円</strong>`);
+    if (!best || unit < best.unit) best = { unit, row, index };
+  });
+  if (best && lines.length > 1) {
+    best.row.classList.add("best");
+    lines.push(`いちばん安いのは商品${best.index + 1}です。`);
+  }
+  result.innerHTML = lines.join("<br>");
+}
+document.getElementById("add").addEventListener("click", addRow);
+addRow(); addRow();
+</script>

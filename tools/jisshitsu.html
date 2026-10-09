@@ -1,0 +1,29 @@
+<!-- title: 実質価格計算機（ポイント・クーポン・送料込み） -->
+<!-- description: 商品価格からポイント還元とクーポンを引き、送料を足した実質価格を計算。ポイント倍率の違うショップの比較に。 -->
+<p>ポイント倍率やクーポン、送料が違うショップどうしを、最終的な負担額で比べるための計算機です。</p>
+<div class="tool">
+  <label for="price">商品価格（円）</label>
+  <input id="price" type="number" inputmode="decimal" min="0" placeholder="例: 50000">
+  <label for="rate">ポイント還元率（%）</label>
+  <input id="rate" type="number" inputmode="decimal" min="0" placeholder="例: 10">
+  <label for="coupon">クーポン値引き（円）</label>
+  <input id="coupon" type="number" inputmode="decimal" min="0" placeholder="例: 1000">
+  <label for="shipping">送料（円）</label>
+  <input id="shipping" type="number" inputmode="decimal" min="0" placeholder="例: 0">
+  <div class="result" id="result"></div>
+</div>
+<p class="note">ポイントはクーポン値引き後の金額に還元率を掛けて計算しています。ポイントの付与には上限や対象外の条件があることが多いので、結果は目安としてください。</p>
+<script>
+const ids = ["price", "rate", "coupon", "shipping"];
+function update() {
+  const [price, rate, coupon, shipping] = ids.map(id => parseFloat(document.getElementById(id).value) || 0);
+  const result = document.getElementById("result");
+  if (!(price > 0)) { result.textContent = ""; return; }
+  const paid = Math.max(price - coupon, 0);
+  const points = Math.floor(paid * rate / 100);
+  const total = paid + shipping - points;
+  const yen = v => Math.round(v).toLocaleString("ja-JP") + "円";
+  result.innerHTML = `支払額: ${yen(paid + shipping)}<br>獲得ポイント: ${points.toLocaleString("ja-JP")}pt<br>実質価格: <strong>${yen(total)}</strong>`;
+}
+ids.forEach(id => document.getElementById(id).addEventListener("input", update));
+</script>

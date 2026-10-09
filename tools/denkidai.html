@@ -1,0 +1,25 @@
+<!-- title: 電気代計算機（消費電力から計算） -->
+<!-- description: 消費電力（W）と1日の使用時間から、1日・1か月・1年の電気代を計算。PCや家電の電気代の目安に。 -->
+<p>消費電力と使う時間から電気代の目安を出します。電気料金の単価は、契約中のプランの1kWhあたりの料金に書き換えてください。</p>
+<div class="tool">
+  <label for="watt">消費電力（W）</label>
+  <input id="watt" type="number" inputmode="decimal" min="0" placeholder="例: 300">
+  <label for="hours">1日の使用時間（時間）</label>
+  <input id="hours" type="number" inputmode="decimal" min="0" max="24" placeholder="例: 4">
+  <label for="rate">電気料金の単価（円/kWh）</label>
+  <input id="rate" type="number" inputmode="decimal" min="0" value="31">
+  <div class="result" id="result"></div>
+</div>
+<p class="note">計算式は「消費電力(W) ÷ 1000 × 使用時間 × 単価」です。単価の初期値31円/kWhは目安で、実際の料金は契約や使用量で変わります。1か月は30日、1年は365日で計算しています。</p>
+<script>
+const ids = ["watt", "hours", "rate"];
+function update() {
+  const [watt, hours, rate] = ids.map(id => parseFloat(document.getElementById(id).value));
+  const result = document.getElementById("result");
+  if (!(watt > 0) || !(hours > 0) || !(rate > 0)) { result.textContent = ""; return; }
+  const day = watt / 1000 * hours * rate;
+  const yen = v => Math.round(v).toLocaleString("ja-JP") + "円";
+  result.innerHTML = `1日: <strong>${day.toFixed(1)}円</strong><br>1か月: <strong>${yen(day * 30)}</strong><br>1年: <strong>${yen(day * 365)}</strong>`;
+}
+ids.forEach(id => document.getElementById(id).addEventListener("input", update));
+</script>
