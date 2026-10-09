@@ -100,11 +100,12 @@ def distinct_sizes(name, units):
     return {(float(number), UNIT_ALIASES.get(unit, unit)) for number, unit in re.findall(pattern, name)}
 
 
-def matches(item_name, must, exclude, single_units=None):
+def matches(item_name, must, exclude, single_units=None, max_sizes=1):
     """must は「いずれかを含む」グループのリスト。全グループを満たし、exclude を含まなければ一致。"""
     name = norm(item_name)
-    # 複数の容量が書かれた出品は「選べる容量」で、表示価格が最小サイズのものなので外す
-    if single_units and len(distinct_sizes(name, single_units)) > 1:
+    # 複数の容量が書かれた出品は「選べる容量」で、表示価格が最小サイズのものなので外す。
+    # "58枚×3（174枚）" のように同じ商品で2通り書かれる単位は max_sizes=2 で許す
+    if single_units and len(distinct_sizes(name, single_units)) > max_sizes:
         return False
     if any(has_token(name, t) for t in exclude):
         return False
@@ -223,7 +224,10 @@ def offers_for(spec, common_exclude, ng_keyword="", limit=1, siblings=()):
         for raw in items:
             item = raw.get("Item", raw)
             name = item.get("itemName", "")
-            if not matches(name, spec["must"], exclude, single_units) or is_other_model(name):
+            if not matches(name, spec["must"], exclude, single_units, spec.get("max_sizes", 1)) or is_other_model(name):
+                continue
+            # 商品名に「中古」と書かない買取店などは、店名で外す
+            if any(word in item.get("shopName", "") for word in spec.get("exclude_shops", [])):
                 continue
             if "amount_from" in spec:
                 # 内容量を商品名から読む。読めない出品は単価を出せないので外す
