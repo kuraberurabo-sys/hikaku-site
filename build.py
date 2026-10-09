@@ -49,8 +49,8 @@ NAV = [("", "トップ"), ("pc/", "PCパーツ"), ("gadget/", "ガジェット")
 SECTIONS = [
     ("pc/", "PCパーツの価格比較", "グラフィックボード、CPU、SSD、メモリなどを、楽天市場の実質価格で比べます。",
      [("gpu", "value"), ("cpu", "value"), ("ssd", "unit"), ("memory", "unit"), ("hdd", "unit"), ("psu", "unit"), ("monitor", "cheapest")]),
-    ("gadget/", "ガジェットの価格比較", "microSDカード、モバイルバッテリー、ゲーム機本体を、楽天市場の実質価格で比べます。",
-     [("sdcard", "unit"), ("battery", "unit"), ("console", "cheapest")]),
+    ("gadget/", "ガジェットの価格比較", "microSDカードとモバイルバッテリーを、楽天市場の実質価格で比べます。",
+     [("sdcard", "unit"), ("battery", "unit")]),
     ("tanka/", "日用品・食品の単価比較", "内容量の違う商品を、同じ量あたりの実質価格で比べます。",
      [("protein", "unit"), ("rice", "unit"), ("water", "unit"), ("paper", "unit"), ("tissue", "unit"), ("diaper", "unit"), ("petfood", "unit")]),
 ]
