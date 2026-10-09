@@ -337,6 +337,8 @@ def page(path, title, description, body, uses_api=False, parents=(), dated=False
     for data in extra_ld:
         head_extra += json_ld(data)
 
+    if not uses_api and path != "about/":
+        body += share_links(url, title)
     current = path.split("/")[0] + "/" if path else ""
     nav = "".join(f'<a href="{rel}{href}"{" class=on" if href == current else ""}>{esc(label)}</a>' for href, label in NAV)
     credit = f'<div class="credit">{CREDIT}</div>' if uses_api else ""
@@ -395,14 +397,25 @@ def table(headers, rows, left=(1,)):
     return f'<div class="table-wrap"><table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>'
 
 
-def offer_link(offer, label):
-    return f'<a href="{esc(offer["url"])}" rel="nofollow sponsored noopener" target="_blank">{label}</a>'
+def offer_link(offer, label, css=""):
+    return f'<a{" class=" + css if css else ""} href="{esc(offer["url"])}" rel="nofollow sponsored noopener" target="_blank">{label}</a>'
 
 
 def offer_cells(offer):
     postage = ' <span class="tag">送料別</span>' if offer["postage_extra"] else ""
-    return [yen(offer["price"]) + postage, f'{offer["points"]:,}pt', f'<strong>{yen(offer["effective"])}</strong>',
-            offer_link(offer, esc(offer["shop"]))]
+    # 店名だけのリンクは押されにくいので、行ごとにボタンを置く
+    shop = f'<span class="shop">{esc(offer["shop"])}</span>{offer_link(offer, "楽天で見る", "btn")}'
+    return [yen(offer["price"]) + postage, f'{offer["points"]:,}pt', f'<strong>{yen(offer["effective"])}</strong>', shop]
+
+
+def share_links(url, title):
+    """楽天APIを使わないページ用。APIを使う部分には楽天以外へのリンクを置けない。"""
+    u, t = urllib.parse.quote(url, safe=""), urllib.parse.quote(title, safe="")
+    targets = [("X", f"https://twitter.com/intent/tweet?url={u}&text={t}"),
+               ("LINE", f"https://social-plugins.line.me/lineit/share?url={u}"),
+               ("はてなブックマーク", f"https://b.hatena.ne.jp/entry/panel/?url={u}")]
+    return '<p class="share">このページを共有: ' + "".join(
+        f'<a href="{esc(href)}" target="_blank" rel="noopener">{label}</a>' for label, href in targets) + "</p>"
 
 
 def short(name, length=70):
@@ -747,6 +760,19 @@ def main():
     if LIVE and stats["ok"] == 0:
         # 全滅したときは空のサイトで上書きしない（前回の公開内容が残る）
         sys.exit("all API requests failed; aborting so the previous deployment stays")
+
+    # 存在しないURLに来た人をトップと各分野へ案内する（GitHub Pages は 404.html を使う）
+    base = SITE["base_url"]
+    links = "".join(f'<li><a href="{esc(base + href)}">{esc(label)}</a></li>' for href, label in NAV)
+    (DIST / "404.html").write_text(
+        f'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
+        f'<meta name="robots" content="noindex"><title>ページが見つかりません | {esc(SITE["name"])}</title>'
+        f'<link rel="stylesheet" href="{esc(base)}style.css"></head><body><main><h1>ページが見つかりません</h1>'
+        f'<p class="lead">お探しのページは、移動したか、なくなりました。下のリンクからお探しください。</p><ul>{links}</ul></main></body></html>',
+        encoding="utf-8")
+    # IndexNow（Bing など）に更新を知らせるための鍵ファイル。公開してよい値
+    if SITE.get("indexnow_key"):
+        (DIST / f'{SITE["indexnow_key"]}.txt').write_text(SITE["indexnow_key"], encoding="utf-8")
 
     today = NOW.strftime("%Y-%m-%d")
     urls = "".join(f"<url><loc>{esc(SITE['base_url'] + p)}</loc><lastmod>{today}</lastmod></url>" for p in sorted(PAGES))

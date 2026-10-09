@@ -1,9 +1,10 @@
 {
   "name": "くらべるラボ",
   "tagline": "数字で比べる買い物ガイド",
-  "description": "PCパーツのコスパ、消耗品の単価、買い物の計算ツールをまとめたサイト。価格は毎日自動で更新しています。",
+  "description": "PCパーツ、ガジェット、日用品を、楽天市場のポイント込み実質価格で比べるサイト。コスパと単価のランキングを毎日自動で更新しています。",
   "base_url": "https://kuraberurabo-sys.github.io/hikaku-site/",
   "operator": "くらべるラボ運営",
   "contact": "kuraberurabo@gmail.com",
+  "indexnow_key": "bcb6c849526eaf539855db4de02ec99b",
   "search_console_verification": "jPUh_VU2dq_3GmAHe7vZbRhlIhG_8P90NwAgCRzpqWY"
 }
