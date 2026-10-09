@@ -53,9 +53,9 @@
     ]
   ],
   "products": [
-    {"name": "Nintendo Switch 2", "keyword": "Nintendo Switch 本体", "min_price": 40000, "must": [["SWITCH2", "スイッチ2"], ["本体"]]},
-    {"name": "PlayStation 5", "keyword": "PS5 本体", "min_price": 55000, "must": [["PS5", "PLAYSTATION5"], ["本体"]], "exclude": ["PRO", "デジタル", "DIGITAL"]},
-    {"name": "PlayStation 5 デジタル・エディション", "keyword": "PS5 デジタル 本体", "min_price": 45000, "must": [["PS5", "PLAYSTATION5"], ["デジタル", "DIGITAL"], ["本体"]], "exclude": ["PRO"]},
-    {"name": "PlayStation 5 Pro", "keyword": "PS5 Pro 本体", "min_price": 90000, "must": [["PS5", "PLAYSTATION5"], ["PRO"], ["本体"]]}
+    {"name": "Nintendo Switch 2", "keyword": "Nintendo Switch 本体", "min_price": 40000, "must": [["SWITCH2", "スイッチ2"], ["本体"]], "exclude_shops": ["買取", "リサイクル", "中古"]},
+    {"name": "PlayStation 5", "keyword": "PS5 本体", "min_price": 55000, "must": [["PS5", "PLAYSTATION5"], ["本体"]], "exclude": ["PRO", "デジタル", "DIGITAL"], "exclude_shops": ["買取", "リサイクル", "中古"]},
+    {"name": "PlayStation 5 デジタル・エディション", "keyword": "PS5 デジタル 本体", "min_price": 45000, "must": [["PS5", "PLAYSTATION5"], ["デジタル", "DIGITAL"], ["本体"]], "exclude": ["PRO"], "exclude_shops": ["買取", "リサイクル", "中古"]},
+    {"name": "PlayStation 5 Pro", "keyword": "PS5 Pro 本体", "min_price": 90000, "must": [["PS5", "PLAYSTATION5"], ["PRO"], ["本体"]], "exclude_shops": ["買取", "リサイクル", "中古"]}
   ]
 }

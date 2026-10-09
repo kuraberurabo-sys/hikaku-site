@@ -42,7 +42,7 @@
     ]
   ],
   "products": [
-    {"name": "ダブル", "keyword": "トイレットペーパー ダブル", "min_price": 1500, "must": [["トイレットペーパー", "トイレットロール"], ["ダブル"]], "exclude": ["シングル"], "amount_from": [["(\\d+)ロール.{0,3}?[×X\\*](\\d+)", 1], ["(\\d+)ロール", 1]], "amount_range": [8, 200], "limit": 5, "sample_amount": 96, "sort": "-reviewCount", "pages": 2, "outlier": 0.45},
-    {"name": "シングル", "keyword": "トイレットペーパー シングル", "min_price": 1500, "must": [["トイレットペーパー", "トイレットロール"], ["シングル"]], "exclude": ["ダブル"], "amount_from": [["(\\d+)ロール.{0,3}?[×X\\*](\\d+)", 1], ["(\\d+)ロール", 1]], "amount_range": [8, 200], "limit": 5, "sample_amount": 96, "sort": "-reviewCount", "pages": 2, "outlier": 0.45}
+    {"name": "ダブル", "keyword": "トイレットペーパー ダブル", "min_price": 1500, "must": [["トイレットペーパー", "トイレットロール"], ["ダブル"]], "exclude": ["シングル"], "amount_from": [["(\\d+)ロール.{0,3}?[×X\\*](\\d+)", 1], ["(\\d+)ロール.{0,3}?(\\d+)パック", 1], ["(\\d+)ロール", 1]], "amount_range": [8, 200], "limit": 5, "sample_amount": 96, "sort": "-reviewCount", "pages": 2, "outlier": 0.45},
+    {"name": "シングル", "keyword": "トイレットペーパー シングル", "min_price": 1500, "must": [["トイレットペーパー", "トイレットロール"], ["シングル"]], "exclude": ["ダブル"], "amount_from": [["(\\d+)ロール.{0,3}?[×X\\*](\\d+)", 1], ["(\\d+)ロール.{0,3}?(\\d+)パック", 1], ["(\\d+)ロール", 1]], "amount_range": [8, 200], "limit": 5, "sample_amount": 96, "sort": "-reviewCount", "pages": 2, "outlier": 0.45}
   ]
 }
