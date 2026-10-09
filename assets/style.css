@@ -108,6 +108,11 @@ tbody tr:last-child td { border-bottom: none; }
 tbody tr:hover { background: var(--accent-soft); }
 td:last-child strong { color: var(--accent); font-size: 1rem; }
 td.l .thumb { float: left; margin-right: 10px; }
+.shop { font-size: 0.8rem; color: var(--muted); }
+.btn { display: inline-block; margin-left: 10px; padding: 4px 12px; border-radius: 999px; background: var(--accent); color: var(--surface); font-size: 0.76rem; font-weight: 700; text-decoration: none; }
+.btn:hover { filter: brightness(1.1); }
+.share { margin-top: 28px; font-size: 0.82rem; color: var(--muted); }
+.share a { margin-left: 10px; }
 .tag { font-size: 0.68rem; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
 .item { display: block; white-space: normal; min-width: 220px; max-width: 400px; font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
 
