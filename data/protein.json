@@ -32,10 +32,10 @@
   ],
   "products": [
     {"name": "ザバス ホエイプロテイン100 980g", "amount": 980, "keyword": "ザバス ホエイプロテイン100 980g", "min_price": 2500, "must": [["ザバス", "SAVAS"], ["ホエイプロテイン100"], ["980G"]], "max_price": 8000},
-    {"name": "グロング ホエイプロテイン100 1kg", "amount": 1000, "keyword": "グロング ホエイプロテイン100 1kg", "min_price": 1800, "must": [["グロング", "GRONG"], ["ホエイ"], ["1KG", "1000G"]], "max_price": 8000},
+    {"name": "グロング ホエイプロテイン100 1kg", "amount": 1000, "keyword": "グロング ホエイプロテイン100 1kg", "min_price": 1800, "must": [["グロング", "GRONG"], ["ホエイ"], ["1KG", "1000G"]], "exclude": ["500G"], "max_price": 8000},
     {"name": "グロング ホエイプロテイン100 3kg", "amount": 3000, "keyword": "グロング ホエイプロテイン100 3kg", "min_price": 5000, "must": [["グロング", "GRONG"], ["ホエイ"], ["3KG", "3000G"]], "max_price": 15000},
     {"name": "エクスプロージョン ホエイプロテイン 3kg", "amount": 3000, "keyword": "エクスプロージョン ホエイプロテイン 3kg", "min_price": 5000, "must": [["エクスプロージョン", "X-PLOSION"], ["3KG", "3000G"]], "max_price": 15000},
-    {"name": "VALX ホエイプロテイン 1kg", "amount": 1000, "keyword": "VALX ホエイプロテイン 1kg", "min_price": 2500, "must": [["VALX", "バルクス"], ["ホエイ"], ["1KG", "1000G"]], "max_price": 8000},
-    {"name": "REYS ホエイプロテイン 1kg", "amount": 1000, "keyword": "REYS ホエイプロテイン 1kg", "min_price": 2000, "must": [["REYS", "レイズ"], ["ホエイ"], ["1KG", "1000G"]], "max_price": 8000}
+    {"name": "VALX ホエイプロテイン 1kg", "amount": 1000, "keyword": "VALX ホエイプロテイン 1kg", "min_price": 2500, "must": [["VALX", "バルクス"], ["ホエイ"], ["1KG", "1000G"]], "exclude": ["500G"], "max_price": 8000},
+    {"name": "REYS ホエイプロテイン 1kg", "amount": 1000, "keyword": "REYS ホエイプロテイン 1kg", "min_price": 2000, "must": [["REYS", "レイズ"], ["ホエイ"], ["1KG", "1000G"]], "exclude": ["500G"], "max_price": 8000}
   ]
 }
