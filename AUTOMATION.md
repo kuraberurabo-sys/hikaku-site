@@ -44,6 +44,21 @@
 
 おかしな行を見つけたら、`data/*.json` の条件（`must` `exclude` `min_price` `max_price` など）を直す。直し方が分からないものは触らずに報告する。
 
+### Search Console
+
+Claude in Chrome（利用者のChrome）で開く。内蔵ブラウザはログインしていないので使わない。Chromeには個人のGoogleアカウントも入っているため、URLの最後に `&authuser=kuraberurabo%40gmail.com` を付けて、くらべるラボ用のアカウントで開く。
+
+- 検索パフォーマンス（過去28日）: `https://search.google.com/search-console/performance/search-analytics?resource_id=https%3A%2F%2Fkuraberurabo-sys.github.io%2Fhikaku-site%2F&authuser=kuraberurabo%40gmail.com`
+  - 合計の表示回数・クリック数・平均掲載順位と、「クエリ」「ページ」の上位を読む
+- ページのインデックス登録: `https://search.google.com/search-console/index?resource_id=https%3A%2F%2Fkuraberurabo-sys.github.io%2Fhikaku-site%2F&authuser=kuraberurabo%40gmail.com`
+  - 「登録済み」「未登録」の数と、画面右上の最終更新日を読む
+- サイトマップ: `https://search.google.com/search-console/sitemaps?resource_id=https%3A%2F%2Fkuraberurabo-sys.github.io%2Fhikaku-site%2F&authuser=kuraberurabo%40gmail.com`
+  - `/sitemap.xml` の状態と「検出されたページ」の数を読む
+
+画面は読み込みに数秒かかる。文字が取れないときは数秒待ってから読み直すか、スクリーンショットで読む。読むだけにし、送信・削除・設定の操作はしない。ログイン画面やアカウント選択の画面が出たら、操作せずに「確認できなかった」と報告する。開いたタブは最後に閉じる。
+
+表示回数がある検索語は、次の「探す」で最優先の手がかりにする。報告の「確認結果の表」に、表示回数・クリック数・登録済みページ数・サイトマップの状態を入れる。
+
 ## 2. 探す
 
 「探す人はいるが、強いサイトが少ない、細かい検索」を探す。分野は絞らない。
