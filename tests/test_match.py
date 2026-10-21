@@ -133,6 +133,22 @@ cases = [
     ("wipes.json", "おしりふき", "手口ふき 赤ちゃん 80枚×15・36個 おしりふき 送料無料 手口拭き ウェットティッシュ ウエットティッシュ ケース ベビー 赤ちゃん", (True, 80.0)),
     ("wipes.json", "流せるおしりふき", "【70枚×15個・30個】おしりふき 流せる まとめ買い 送料無料 70枚×30個セット 流せるおしりふき ノンアルコール 大容量", (False, None)),
     ("wipes.json", "おしりふき", "パンパース おしりふき 肌へのいちばん(56枚*12個入*2セット)【パンパース 肌へのいちばん】", (True, 1344.0)),
+    ("usbmemory.json", "USBメモリ 64GB", "USBメモリ USB 64GB SanDisk サンディスク Cruzer Glide USB3.0 海外リテール SDCZ600-064G-G35 ◆メ", (True, 64)),
+    ("usbmemory.json", "USBメモリ 64GB", "【期間限定 最大20％OFF】USBメモリ 64GB USB3.2 Gen1 日本製【翌日配達送料無料】 KIOXIA TransMemory U301 キャップ式 ホワイト LU301W064GG4", (True, 64)),
+    ("usbmemory.json", "USBメモリ 64GB", "USBメモリ フラッシュメモリ USBメモリー フラッシュドライブ Lexar 16GB 32GB 64GB 128GB USB2.0 スライド式キャップ USB Type-A タイプA Window", (False, 64)),
+    ("usbmemory.json", "USBメモリ 64GB", "SDカード SD 64GB SDXC SanDisk サンディスク Extreme PRO Class10 UHS-I U3 V30 4K R:200MB/s W:90MB/s 海外リテール SDSDXXU-064G-G", (False, 64)),
+    ("usbmemory.json", "USBメモリ 128GB", "USBメモリ USB 128GB SanDisk サンディスク Ultra Fit USB 3.1 Gen1 R:400MB/s 超小型設計 ブラック 海外リテール SDCZ430-128G-G46 ◆メ", (True, 128)),
+    ("usbmemory.json", "USBメモリ 128GB", "シリコンパワー USBメモリ 128GB USB3.1 USB3.0 3.2 USB-A メモリー USBメモリー メモリスティック 外付けメモリ 容量不足 写真 データ転送 バックアップ フラッシュ データ キャップ式", (True, 128)),
+    ("usbmemory.json", "USBメモリ 128GB", "USBメモリ usbフラッシュメモリ usb2.0 128gb タブレットPC カーオーディオ 小型 メモリースティック タブレットPC 1年保証 高性能 高い互換性 音楽プレーヤー用 高速 容量 お", (False, 128)),
+    ("usbmemory.json", "USBメモリ 128GB", "マイクロSDカード 128GB microSDカード microSDXC SanDisk サンディスク Extreme UHS-I U3 V30 A2 R:190MB/s W:90MB/s Nintendo Switch", (False, 128)),
+    ("usbmemory.json", "USBメモリ 256GB", "USBメモリ 256GB USB3.2 Gen1(USB3.0) KIOXIA キオクシア TransMemory U301 キャップ式 ホワイト 海外リテール LU301W256GG4 ◆メ", (True, 256)),
+    ("usbmemory.json", "USBメモリ 256GB", "USBメモリ USB 256GB SanDisk サンディスク Ultra Fit USB 3.1 Gen1 R:400MB/s 超小型設計 ブラック 海外リテール SDCZ430-256G-G46 ◆メ", (True, 256)),
+    ("usbmemory.json", "USBメモリ 256GB", "エイデータ USBメモリ 32GB/64GB/128GB/256GB/512GB UV128 USB3.2 Gen1 高速 大容量 AUV128-256G-RBE-I ブラック/ブルー(スナップ式)", (False, 256)),
+    ("usbmemory.json", "USBメモリ 256GB", "マイクロSDカード microSD 256GB microSDカード microSDXC SanDisk サンディスク Ultra Class10 UHS-I A1 R:150MB/s Nintendo Switch動作", (False, 256)),
+    ("usbmemory.json", "USBメモリ 512GB", "USBメモリ USB 512GB USB3.1 Gen1(USB3.0) SanDisk サンディスク Ultra Fit R:400MB/s 超小型 ブラック 海外リテール SDCZ430-512G-G46 ◆メ", (True, 512)),
+    ("usbmemory.json", "USBメモリ 512GB", "USBメモリ USB 512GB USB3.0 SanDisk サンディスク Ultra Flair R:150MB/s 小型 金属製 海外リテール SDCZ73-512G-G46 ◆メ", (True, 512)),
+    ("usbmemory.json", "USBメモリ 512GB", "ebamaz フラッシュドライブ USBメモリ2.0スティックマルチカラー 5個セット (512MB, 低容量, 512GBではない)", (False, 512)),
+    ("usbmemory.json", "USBメモリ 512GB", "SanDisk USB3.1 Gen1 Type-A/C パッケージ サンディスク (USB3.0フラッシュメモリー) 32GB / 64GB / 128GB / 256GB / 512GB", (False, 512)),
 ]
 bad = []
 for file, name, item, want in cases:
