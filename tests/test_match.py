@@ -149,6 +149,20 @@ cases = [
     ("usbmemory.json", "USBメモリ 512GB", "USBメモリ USB 512GB USB3.0 SanDisk サンディスク Ultra Flair R:150MB/s 小型 金属製 海外リテール SDCZ73-512G-G46 ◆メ", (True, 512)),
     ("usbmemory.json", "USBメモリ 512GB", "ebamaz フラッシュドライブ USBメモリ2.0スティックマルチカラー 5個セット (512MB, 低容量, 512GBではない)", (False, 512)),
     ("usbmemory.json", "USBメモリ 512GB", "SanDisk USB3.1 Gen1 Type-A/C パッケージ サンディスク (USB3.0フラッシュメモリー) 32GB / 64GB / 128GB / 256GB / 512GB", (False, 512)),
+    ("lifepo4.json", "12V 50Ah", "LiTime 12V 50Ah リン酸鉄リチウムイオンバッテリー 4000回以上ディープサイクル 容量640Wh 大幅な軽量化 LiFePO4 ボート マリン トローリング モーター キャンプ RV キャンプ シニアカー", (True, 50)),
+    ("lifepo4.json", "12V 50Ah", "Redodo 12V 50Ah PRO リン酸鉄リチウムイオンバッテリー 640Wh 10年寿命 軽量 小型化12v LiFePO4 BMS保護 充放電サイクル4000回以上 RV キャンピングカー キャンプ ボート ア", (True, 50)),
+    ("lifepo4.json", "12V 50Ah", "【魚探/電動リール用】LiTime 12V 50Ah リン酸鉄リチウムイオンバッテリー 14.6V10A専用充電器付き 内蔵BMS保護 4000回以上サイクル 長寿命 環境に優しいLiFePO4バッテリー ボート釣り用", (False, 50)),
+    ("lifepo4.json", "12V 50Ah", "【船検適合品】LiTime 24V50Ah TM リン酸鉄リチウムバッテリー Bluetooth 低温保護 1280Wh 4000回以上サイクル スマート トローリングモーター エレキ 船 オフグリッド マリン ボート", (False, 50)),
+    ("lifepo4.json", "12V 100Ah", "【ランキング1位】LiTime 12V 100Ah リン酸鉄リチウムイオンバッテリー グループ 31 内蔵100AのBMS 4000~15000サイクル回数 RV ソーラー 家庭用蓄電 バックアップ電源 オフグリッド ア", (True, 100)),
+    ("lifepo4.json", "12V 100Ah", "Redodo 12V 100Ah リン酸鉄リチウムイオンバッテリー 1280Wh 10年寿命 充放電サイクル4000回以上 LiFePO4 BMS保護 容量拡張 車中泊 オフグリッド 防災対策 ソーラーシステム 推力30", (True, 100)),
+    ("lifepo4.json", "12V 100Ah", "【Group24規格】LiTime 12V100Ah リン酸鉄リチウムイオンバッテリー Bluetooth機能付き BCI Group24サイズ 100A充放電電流 1280Wh 4000以上サイクル スマート LiFe", (True, 100)),
+    ("lifepo4.json", "12V 100Ah", "【2SET】LiTime 12V 100Ah リン酸鉄リチウムイオンバッテリー グループ 31 内蔵100AのBMS 4000~15000サイクル回数 RV、ソーラー、バックアップ電源、オフグリッド アプリケーション、ボ", (False, 100)),
+    ("lifepo4.json", "12V 100Ah", "Redodo 24V 100Ahリン酸鉄リチウムイオンバッテリー 2560Wh LiFePO4バッテリー 10年寿命 最大電力2560W BMS保護 充放電サイクル4000~15000回 容量拡張可能 RV キャンピング", (False, 100)),
+    ("lifepo4.json", "12V 100Ah", "送料無料 LONG 12V100Ah 耐久性2倍 期待寿命10〜15年 密閉型ゲルバッテリー LGK100-12N 長寿命 密封型鉛蓄電池 ソーラー発電～キャンピングカーのサブバッテリー などに特に最適", (False, 100)),
+    ("lifepo4.json", "12V 200Ah", "LiTime 12V 200Ah リン酸鉄リチウムイオンバッテリー 内蔵100AのBMS 最大2.56kWhエネルギー 15000回までサイクル可能 RV ソーラー マリン 監視設備 トローリングモーター 小型トラック", (True, 200)),
+    ("lifepo4.json", "12V 200Ah", "【Grade-A電池セル-5年保証】LVYUAN 12.8V/200AH リン酸鉄リチウムイオンバッテリー 2.56KWH 大容量 12V 内蔵200A BMS LiFePO4バッテリー 並列直列接続可能 キャンピングカ", (True, 200)),
+    ("lifepo4.json", "12V 200Ah", "【プライム感謝祭セール 自己加熱】RENOGY 12V 300Ah リン酸鉄リチウムイオンバッテリー 自己加熱 大容量 BMS保護 サイクル5000回以上 PSE技適認証取得 最大8台並列 発熱 寒冷地対応 レノジー C", (False, 200)),
+    ("lifepo4.json", "12V 200Ah", "【蓄電池太陽光用最適】LiTime 51.2V 100Ah LiFePO4リチウムバッテリー グループ8D 内蔵100A BMS、グレードAセル、最大5120W 負荷電力 4000-15000 回サイクル&10", (False, 200)),
 ]
 bad = []
 for file, name, item, want in cases:
