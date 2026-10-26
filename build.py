@@ -52,7 +52,7 @@ SECTIONS = [
     ("gadget/", "ガジェットの価格比較", "microSDカード、USBメモリ、モバイルバッテリー、リン酸鉄バッテリーを、楽天市場の実質価格で比べます。",
      [("sdcard", "unit"), ("usbmemory", "unit"), ("battery", "unit"), ("lifepo4", "unit")]),
     ("tanka/", "日用品・食品の単価比較", "内容量の違う商品を、同じ量あたりの実質価格で比べます。",
-     [("protein", "unit"), ("rice", "unit"), ("water", "unit"), ("paper", "unit"), ("tissue", "unit"), ("diaper", "unit"), ("petfood", "unit"), ("copypaper", "unit"), ("dishtab", "unit"), ("wipes", "unit"), ("kandenchi", "unit")]),
+     [("protein", "unit"), ("rice", "unit"), ("water", "unit"), ("paper", "unit"), ("tissue", "unit"), ("diaper", "unit"), ("petfood", "unit"), ("copypaper", "unit"), ("dishtab", "unit"), ("wipes", "unit"), ("kandenchi", "unit"), ("kairo", "unit"), ("regiroll", "unit")]),
 ]
 
 stats = {"ok": 0, "fail": 0}
