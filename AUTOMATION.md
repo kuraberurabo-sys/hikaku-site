@@ -11,6 +11,20 @@
 - 公開先: https://kuraberurabo-sys.github.io/hikaku-site/
 - リポジトリ: https://github.com/kuraberurabo-sys/hikaku-site （main に push すると数分後に公開される）
 
+### コマンドの書き方（自動実行で止まらないために、この形だけを使う）
+
+自動実行では、許可済みのコマンドと一字一句同じ形でないと確認待ちで止まる。PowerShell は次の形だけを使い、1回の呼び出しで1つのコマンドを実行する（`;` でつながない、`$g = ...` のような変数を使わない、`cd` しない）。
+
+```
+& "$env:LOCALAPPDATA\Programs\PortableGit\cmd\git.exe" -C "C:\Users\taiyo\Documents\hikaku-site" <git の引数>
+& "$env:LOCALAPPDATA\Python\pythoncore-3.14-64\python.exe" C:\Users\taiyo\Documents\hikaku-site\tests\test_match.py
+& "$env:LOCALAPPDATA\Python\pythoncore-3.14-64\python.exe" C:\Users\taiyo\Documents\hikaku-site\build.py
+```
+
+- `PYTHONUTF8` は設定で入っているので、コマンドの中で設定しない
+- ウェブの取得（status.json、`api.github.com` の Actions 履歴、楽天の検索結果）は PowerShell の Invoke-RestMethod / Invoke-WebRequest を使わず、WebFetch で行う
+- ファイルの一覧や中身は PowerShell ではなく Read・Glob・Grep で見る。書き換えは Edit・Write で行う
+
 作業の最初に必ず `git pull --ff-only` する。コミットの作者はこのリポジトリの設定（匿名の noreply アドレス）のまま使い、変更しない。
 
 ## 使う量を抑える決まり
