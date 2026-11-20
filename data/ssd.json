@@ -54,6 +54,6 @@
     {"name": "M.2 NVMe 2TB", "keyword": "SSD 2TB NVMe M.2", "min_price": 17000, "must": [["2TB"], ["SSD"], ["NVME"]], "amount": 2, "exclude": ["SATA", "パソコン", "デスクトップ"], "single_units": ["GB", "TB"], "limit": 3},
     {"name": "M.2 NVMe 4TB", "keyword": "SSD 4TB NVMe M.2", "min_price": 35000, "must": [["4TB"], ["SSD"], ["NVME"]], "amount": 4, "exclude": ["SATA", "パソコン", "デスクトップ"], "single_units": ["GB", "TB"], "limit": 3},
     {"name": "2.5インチ SATA 500GB", "keyword": "SSD 500GB SATA 2.5インチ", "min_price": 4500, "must": [["500GB"], ["SSD"], ["SATA", "SATA3", "SATAIII", "SATA3.0"]], "amount": 0.5, "exclude": ["NVME", "M.2", "MSATA", "WINDOWS", "WIN11", "WIN10", "OFFICE", "CELERON", "ATHLON", "RYZEN", "CORE I3", "CORE I5", "CORE I7"], "single_units": ["GB", "TB"], "limit": 3},
-    {"name": "2.5インチ SATA 1TB", "keyword": "SSD 1TB SATA 2.5インチ", "min_price": 8000, "must": [["1TB"], ["SSD"], ["SATA", "SATA3", "SATAIII", "SATA3.0"]], "amount": 1, "exclude": ["NVME", "M.2", "MSATA", "WINDOWS", "WIN11", "WIN10", "OFFICE", "CELERON", "ATHLON", "RYZEN", "CORE I3", "CORE I5", "CORE I7"], "single_units": ["TB"], "limit": 3}
+    {"name": "2.5インチ SATA 1TB", "keyword": "SSD 1TB SATA 2.5インチ", "min_price": 8000, "must": [["1TB"], ["SSD"], ["SATA", "SATA3", "SATAIII", "SATA3.0"]], "amount": 1, "exclude": ["NVME", "M.2", "MSATA", "WINDOWS", "WIN11", "WIN10", "OFFICE", "CELERON", "ATHLON", "RYZEN", "CORE I3", "CORE I5", "CORE I7"], "single_units": ["TB"], "limit": 3, "sort": "-reviewCount", "pages": 2}
   ]
 }
